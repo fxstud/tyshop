@@ -1,38 +1,134 @@
-.App {
-  text-align: center;
+
+#root{
+  font-family: 'Oswald','sans-serif';
+  background-color: rgba(214,214,212,0.2);
+  color: #3b3a32;
+  height: 1000px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navb{
+  background-color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#myNavbar{
+  width: 100%;
+  box-shadow: 2px 2px #eee;
+} 
+
+#myNavbar1{
+  margin-left: 200px;
+  margin-top: -80px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+#myNavbar3{
+   margin-left: 20px;
+   margin-top:  -50px;
+}
+
+
+.largeMyNavbar2{
+  margin-left: auto;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: -50px;  
 }
 
-.App-link {
-  color: #61dafb;
+
+#loginButton{
+  margin-left: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+#productField{
+  margin-right: 5px;
+  margin-left: 3px;
+}
+
+.btn-perso-1{
+  color: #3b3a32 !important;
+  transition: all .5s ease-in-out !important;
+}
+
+/* .btn-perso-1 FaShoppingCart{
+  color: #3b3a32 !important;
+  transition: all .5s ease-in-out !important;
+}
+
+.btn-perso-1 FaUser{
+  color: #3b3a32 !important;
+  transition: all .5s ease-in-out !important;
+} */
+
+.btn-perso-1:hover{
+  color: #ffbb02 !important;
+  background-color: #3b3a32 !important;
+}
+
+/* .btn-perso-1 FaShoppingCar:hover{
+  color: #ffbb02 !important;
+}
+
+.btn-perso-1 FaUser:hover{
+  color: #ffbb02 !important;
+} */
+
+#myNavbar1 li{
+  color: #3b3a32 !important;
+  transition: all .3s ease-in-out !important;
+}
+
+#myNavbar1:hover li{
+  opacity: 0.2;
+  filter: blur(0.px);
+}
+
+#myNavbar1 li:hover{
+  opacity: 1;
+  filter: blur(0px);
+}
+
+
+/*********************seachbox*************************/
+
+.myNavbar3 .btn{
+  background-color: #ffbb02 !important;
+  max-width: 40px;
+  border: none !important;
+  border-top-right-radius: 25px !important;
+  border-bottom-right-radius: 25px !important;
+  margin-bottom: 5px;
+}
+
+.myNavbar3 .form-control{
+  border-top-left-radius: 25px !important;
+  border-bottom-left-radius: 25px !important;
+  background-color: rgba(214,214,212,0.2) !important;
+  display: inline-block;
+}
+
+/* .myNavbar3 .form-group{
+  margin-bottom: 0px;
+} */
+
+.myNavbar3 .btn {
+  transition: all .3s ease-in-out !important;
+  color: #3b3a32 !important;
+}
+
+.myNavbar3 .btn:hover {
+  font-size: 18px;
+}
+
+/*code css à appliquer pour tous les écrans qui ont une taille minimale de 900 pixels*/
+@media only screen and (min-width : 900px){
+  .myNavbar3 .form-control{
+    width: 250px;
   }
 }
+
+@media only screen and (min-width : 1200px){
+  .myNavbar3 .form-control{
+    width: 350px;
+  }
+}
+
+
+
