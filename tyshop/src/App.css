@@ -13,7 +13,13 @@
 #myNavbar{
   width: 100%;
   box-shadow: 2px 2px #eee;
-} 
+}
+
+#myNavbar a{
+  text-decoration: none !important;
+  color: #3b3a32 ;
+  /*transition: all .5s ease-in-out !important;*/
+}
 
 #myNavbar1{
   margin-left: 200px;
@@ -60,6 +66,10 @@
 .btn-perso-1:hover{
   color: #ffbb02 !important;
   background-color: #3b3a32 !important;
+}
+
+.btn-perso-1:hover a{
+  color: #ffbb02 !important;
 }
 
 /* .btn-perso-1 FaShoppingCar:hover{
@@ -128,6 +138,23 @@
   .myNavbar3 .form-control{
     width: 350px;
   }
+}
+
+/***********title component*****************/
+.text-title{
+  font-family: 'Permanent Marker', cursive;
+  letter-spacing: 0.3;
+  text-transform: uppercase;
+}
+
+.text-title h1{
+  font-weight: bold;
+  text-transform: capitalize;
+  
+}
+
+.text-yellow{
+  color: #ffbb02;
 }
 
 

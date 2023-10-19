@@ -1,7 +1,8 @@
 import React from 'react'
 import {Navbar,Nav,NavbarBrand,Collapse,NavItem,Button,Form,FormGroup,Input,Label} from 'reactstrap'
 import { NavbarToggler } from 'reactstrap'
-import {FaSearch,FaShoppingCart,FaUser} from "react-icons/fa"; 
+import {FaSearch,FaShoppingCart,FaUser} from "react-icons/fa";
+import { NavLink } from 'react-router-dom'; 
 
 class Header extends React.Component{
     render(){
@@ -17,14 +18,23 @@ class Header extends React.Component{
                     <div className='container'>
                         
                         
-                        <NavbarBrand id='navBarBrand'><img  src='/img/logo.png' height='50' width='200'  alt='tyshop 237'></img></NavbarBrand>
+                        <NavbarBrand id='navBarBrand'>
+                            <NavLink to='home'>
+                                <img  src='/img/logo.png' height='50' width='200'  alt='tyshop 237'></img>
+                            </NavLink>  
+                        </NavbarBrand>
                         
                         <NavbarToggler></NavbarToggler>
                         
                         <Collapse navbar>
                             <Nav navbar id="myNavbar1">
-                                <NavItem id='productField'>Products</NavItem>
-                                <NavItem>Contact Us</NavItem>
+                                <NavItem id='productField'>
+                                    <NavLink to='home'>Products</NavLink>
+                                </NavItem>
+
+                                <NavItem>
+                                    <NavLink to='contact'>Contact Us</NavLink>
+                                </NavItem>
                             </Nav>
 
                             <Nav navbar className="myNavbar3">
@@ -40,7 +50,9 @@ class Header extends React.Component{
 
                         <Nav navbar className='largeMyNavbar2 lg'>
                                 <NavItem>
-                                    <Button outline className='btn-perso-1'>Mon panier <FaShoppingCart/></Button>
+                                    <Button outline className='btn-perso-1'>
+                                        <NavLink to='cart'>Mon panier <FaShoppingCart/></NavLink>
+                                    </Button>
                                 </NavItem>
                                 <NavItem id='loginButton'>
                                     <Button outline className='btn-perso-1'>Login <FaUser/></Button>
