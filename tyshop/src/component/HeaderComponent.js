@@ -16,8 +16,7 @@ class Header extends React.Component{
 
                 <Navbar light expand="lg" id='myNavbar' className='align-items-center sticky-top  navbar'>
                     <div className='container'>
-                        
-                        
+                                               
                         <NavbarBrand id='navBarBrand'>
                             <NavLink to='home'>
                                 <img  src='/img/logo.png' height='50' width='200'  alt='tyshop 237'></img>
