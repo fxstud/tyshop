@@ -5,6 +5,7 @@ import {Provider} from 'react-redux'
 import {ConfigureStore} from './redux/ConfigureStore'
 
 import './App.css';
+import './css/product.css'
 
 const store = ConfigureStore()
 
