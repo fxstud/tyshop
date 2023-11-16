@@ -31,7 +31,7 @@ export default class Product extends React.Component{
                 <div className="product-grid mb-4">
                     
                     <div className="product-image">
-                        <Link to='/home'>
+                        <Link to={`/home/${id}`}>
                             <img alt= "shoes" className="pic-1 img-responsive" src={img}/> 
 
                             {promo>0 ? 
@@ -53,7 +53,7 @@ export default class Product extends React.Component{
 
                         <ul className="action-product list-unstyled">
                             <li className="text-center">
-                                <Link to="/home">
+                                <Link to={`/home/${id}`}>
                                     <div className="searching"><FaSearch/></div>                                    
                                 </Link>
                             </li>
