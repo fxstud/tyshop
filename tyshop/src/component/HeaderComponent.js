@@ -2,12 +2,14 @@ import React from 'react'
 import {Navbar,Nav,NavbarBrand,Collapse,NavItem,Button,Form,FormGroup,Input,Label} from 'reactstrap'
 import { NavbarToggler } from 'reactstrap'
 import {FaSearch,FaShoppingCart,FaUser} from "react-icons/fa";
-import { NavLink } from 'react-router-dom'; 
+import { NavLink } from 'react-router-dom';
+import BeforeHeader from './BeforeHeaderComponent';
 
 class Header extends React.Component{
     render(){
         return(
             <>
+                <BeforeHeader></BeforeHeader>
                 {/* Le menu de navigation doit s'ouvrir dès que l'écran dépasse ~ 960 px.
                     La popriété sticky top permet de fixer en hauteur un composant (içi Navbar).
 

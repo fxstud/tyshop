@@ -163,5 +163,74 @@
   
 }
 
+/************************************************beforeHeader******************************************/
+.topNavbar{
+  background-color: #ffbb02;
+  position: relative;
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+}
 
+
+.topNavbar p{
+  position:absolute;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #3b3a32;
+  font-size: 25px;
+  font-family: 'Balsamiq Sans';
+  text-align: center;
+  top: 0;
+  left: 25%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  white-space: nowrap;
+}
+
+/************************************CartComponent**********************************************/
+
+.cartItem{
+  border-radius: 10px;
+  background-color: #fff;
+  margin-bottom: 15px;
+  margin-top: 8px;
+}
+
+.cartItem img{
+  border-radius: 10px;
+  height: 80px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.buttonCart{
+  margin-left: 5px;
+  background-color: #3b3a32 !important;
+  border: none;
+  max-width: 35px;
+  box-shadow: 2px 2px 0 rgba(0,0,0,.15);
+}
+
+.buttonCart span{
+  transition: all .3s ease-in-out;
+}
+.buttonCart:hover span{
+  font-size: 20px;
+}
+
+.buttonCart-middle{
+  height: 55px;
+  width: 30px;
+}
+.buttonCartDelete{
+  border-radius: 50% !important;
+  background-color: #fa3c3c !important;
+  transition: all .3s ease-in-out;
+}
+
+.spaceCart{
+  min-height: 400px;
+}
 

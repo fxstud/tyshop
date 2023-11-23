@@ -6,12 +6,13 @@ import {connect} from 'react-redux'
 import Header from './HeaderComponent'
 import Contact from './ContactComponent'
 import Home from './HomCompConst'
-import Cart from './CartComponent'
+import Cart from './CartCompConst'
 import ProductDetail from './ProductDetailComponent'
 
 const mapStateToProps = state =>{
     return{
-        lesProduits : state.Products
+        lesProduits : state.Products,
+        lesProduitsInCart : state.Cart
     }
 }
 
