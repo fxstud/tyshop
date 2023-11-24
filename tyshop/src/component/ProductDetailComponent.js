@@ -33,7 +33,7 @@ export default function ProductDetail(props){
                                 </CardText>
 
                                 <div className='d-flex justify-content-center'>
-                                    <Button outline className='btn-perso-1'>Acheter</Button>
+                                    <Button outline className='btn-perso-1' onClick={() => {inCart ? console.log("incart") : props.addToCart(props.produit)}}>Acheter</Button>
                                     <Link to={'/home'}>
                                         <Button outline className='ml-5 btn-perso-1' >Retourner</Button>
                                     </Link>

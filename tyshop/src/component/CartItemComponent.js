@@ -21,19 +21,19 @@ export default function CartItem(props){
 
                 <div className="col-10 col-lg-2 mx-auto my-lg-auto">
                     <Button className="btn btn-primary outline buttonCart">
-                        <span className="fa fa-plus"></span>
+                        <span className="fa fa-plus" onClick={() => props.addQuantity(id)}></span>
                     </Button>
                     <Button className="btn btn-primary outline buttonCart buttonCart-middle">
                         <span>{count}</span>
                     </Button>
                     <Button className="btn btn-primary outline buttonCart ">
-                        <span className="fa fa-minus"></span>
+                        <span className="fa fa-minus" onClick={() => props.removeQuantity(id)}></span>
                     </Button>
                 </div>
 
                 <div className="col-10 col-lg-2 mx-auto my-3">
                     <Button className="btn btn-primary outline buttonCart buttonCartDelete ">
-                        <span className="fa fa-times m-auto"></span>
+                        <span className="fa fa-times m-auto" onClick={() => props.removeToCart(id)}></span>
                     </Button>
                 </div>
 

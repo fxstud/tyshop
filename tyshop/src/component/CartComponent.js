@@ -16,7 +16,7 @@ function Cart(props){
                             :
                             <>
                                 <CartColumns></CartColumns>
-                                {props.lesProduitsInCart.map(p => <CartItem produit={p}></CartItem>)}
+                                {props.lesProduitsInCart.map(p => <CartItem produit={p} removeToCart={props.removeToCart} removeQuantity = {props.removeQuantity} addQuantity = {props.addQuantity}></CartItem>)}
                             </>
                         }
 

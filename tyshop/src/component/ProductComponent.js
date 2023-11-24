@@ -58,7 +58,7 @@ export default class Product extends React.Component{
                                 </Link>
                             </li>
                             <li className="ml-4 text-center">
-                                <div className="carting"><FaShoppingCart/></div>
+                                <div className="carting" onClick={() => {inCart ? console.log("incart") : this.props.addToCart(this.props.caracteristique)}}><FaShoppingCart/></div>
                             </li>
                         </ul>
                     </div>

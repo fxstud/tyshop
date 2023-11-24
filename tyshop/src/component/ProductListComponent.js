@@ -9,7 +9,7 @@ export default class ProductList extends React.Component{
     lesProducts(){
         if(this.props.lesProduits != null){
             const products = this.props.lesProduits.map( p => {
-                return(<Product caracteristique = {p}></Product>)
+                return(<Product caracteristique = {p} addToCart = {this.props.addToCart}></Product>)
             })
 
             return(<div className="row">{products}</div>)

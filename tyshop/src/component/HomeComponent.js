@@ -6,7 +6,7 @@ function Home(props){
     return(
         <div className="container">
             <Title name={'our'} title={'products'} />
-            <ProductList lesProduits = {props.lesProduits}></ProductList>
+            <ProductList lesProduits = {props.lesProduits} addToCart = {props.addToCart}></ProductList>
         </div>
     )
 }

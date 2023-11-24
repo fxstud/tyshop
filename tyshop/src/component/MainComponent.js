@@ -8,14 +8,21 @@ import Contact from './ContactComponent'
 import Home from './HomCompConst'
 import Cart from './CartCompConst'
 import ProductDetail from './ProductDetailComponent'
+import {addToCart,removeToCart,addQuantity,removeQuantity} from '../redux/ActionCreator'
 
 const mapStateToProps = state =>{
     return{
         lesProduits : state.Products,
-        lesProduitsInCart : state.Cart
+        lesProduitsInCart : state.Cart,
     }
 }
 
+const mapDispatchToProps = dispatch => ({
+    addToCart : (product) => dispatch(addToCart(product)),
+    removeToCart : (id) => dispatch(removeToCart(id)),
+    addQuantity : (id) => dispatch(addQuantity(id)),
+    removeQuantity : (id) => dispatch(removeQuantity(id))
+})
 
 
 class Main extends React.Component{
@@ -28,7 +35,7 @@ class Main extends React.Component{
             const {pId} = useParams();    
             return(
                 
-                <ProductDetail produit = {this.props.lesProduits.lesProduits.filter( p => p.id === parseInt(Number(pId)))[0]}></ProductDetail>
+                <ProductDetail produit = {this.props.lesProduits.lesProduits.filter( p => p.id === parseInt(Number(pId)))[0]} addToCart = {this.props.addToCart}></ProductDetail>
             )
         }
 
@@ -49,4 +56,4 @@ class Main extends React.Component{
            
 }
 
-export default connect(mapStateToProps)(Main)
+export default connect(mapStateToProps,mapDispatchToProps)(Main)
