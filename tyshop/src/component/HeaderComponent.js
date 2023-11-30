@@ -1,11 +1,40 @@
 import React from 'react'
-import {Navbar,Nav,NavbarBrand,Collapse,NavItem,Button,Form,FormGroup,Input,Label} from 'reactstrap'
+import {Navbar,Nav,NavbarBrand,Collapse,NavItem,Button,Form,FormGroup,Input,Label,Modal,ModalBody,ModalHeader} from 'reactstrap'
 import { NavbarToggler } from 'reactstrap'
 import {FaSearch,FaShoppingCart,FaUser} from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import BeforeHeader from './BeforeHeaderComponent';
+import NavSmallScreen from './NavSmallScreen';
 
 class Header extends React.Component{
+
+    constructor(props){
+        super(props)
+        
+        this.toggleNav = this.toggleNav.bind(this)
+        this.toggleModal = this.toggleModal.bind(this)
+        this.handleLogin = this.handleLogin.bind(this)
+        this.state = {
+            isNavOpen : false,
+            isModalOpen : false
+        }
+    }
+
+    toggleNav(){
+        this.setState({isNavOpen : !this.state.isNavOpen})
+    }
+
+    toggleModal(){
+        this.setState({isModalOpen : !this.state.isModalOpen})
+    }
+    handleLogin(e){
+        e.preventDefault()
+        this.toggleModal()
+        alert("username : " + this.username.value + "\npassword : "+ this.password.value+"\nremember : "+this.remember.checked)
+
+    }
+
+
     render(){
         return(
             <>
@@ -25,20 +54,20 @@ class Header extends React.Component{
                             </NavLink>  
                         </NavbarBrand>
                         
-                        <NavbarToggler></NavbarToggler>
+                        <NavbarToggler onClick={this.toggleNav}></NavbarToggler>
                         
-                        <Collapse navbar>
-                            <Nav navbar id="myNavbar1">
+                        <Collapse navbar isOpen = {this.state.isNavOpen} >
+                            <Nav navbar id="myNavbar1" className='mr-lg-3'>
                                 <NavItem id='productField'>
                                     <NavLink to='home'>Products</NavLink>
                                 </NavItem>
 
-                                <NavItem>
+                                <NavItem className='mr-2 mt-2 mt-lg-0'>
                                     <NavLink to='contact'>Contact Us</NavLink>
                                 </NavItem>
                             </Nav>
 
-                            <Nav navbar className="myNavbar3">
+                            <Nav navbar className="myNavbar3 d-none d-lg-block">
                                 <NavItem>
                                     <Form>
                                         <FormGroup id='myNavbar3'>
@@ -49,19 +78,48 @@ class Header extends React.Component{
                                 </NavItem>
                             </Nav>
 
-                        <Nav navbar className='largeMyNavbar2 lg'>
-                                <NavItem>
+                        <Nav navbar className='largeMyNavbar2 ml-0 ml-lg-auto align-items-lg-center'>
+                                <NavItem className='mr-2 d-none d-lg-block'>
                                     <Button outline className='btn-perso-1'>
                                         <NavLink to='cart'>Mon panier <FaShoppingCart/></NavLink>
                                     </Button>
                                 </NavItem>
-                                <NavItem id='loginButton'>
-                                    <Button outline className='btn-perso-1'>Login <FaUser/></Button>
+                                <NavItem id='loginButton' className='mr-2 d-none d-lg-block'>
+                                    <Button outline className='btn-perso-1' onClick={this.toggleModal}>Login <FaUser/></Button>
                                 </NavItem>                                
                             </Nav>
                         </Collapse>
                     </div>
                 </Navbar>
+
+                <NavSmallScreen toggleModal = {this.toggleModal}></NavSmallScreen>
+
+                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                    <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+                    <ModalBody>
+                        <Form onSubmit={this.handleLogin}>
+                            {/*on use innerRef au lieu de Ref car reacstrap utilise deja ref */}
+                                <FormGroup>
+                                    <Label htmlFor="username">Username</Label>
+                                    <Input type="text" id="username" name="username"
+                                        innerRef={(input) => this.username = input} />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label htmlFor="password">Password</Label>
+                                    <Input type="password" id="password" name="password"
+                                        innerRef={(input) => this.password = input}  />
+                                </FormGroup>
+                                <FormGroup className="mx-2" check>
+                                    <Label check>                                        
+                                        <Input  type="checkbox" name="remember" className="formClass"
+                                        innerRef={(input) => this.remember = input}  />     
+                                        Remember me
+                                    </Label>
+                                </FormGroup>
+                                <Button outline type="submit" value="submit" className="btn-perso-1">Login</Button>
+                            </Form>
+                    </ModalBody>
+                </Modal>
                 
             </>
         

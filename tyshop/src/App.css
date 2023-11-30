@@ -139,7 +139,22 @@
     width: 350px;
   }
 }
+/***********small nav***********************/
+#navBarSmallScreen i{
+  color:#3b3a32;
+}
 
+@media only screen and (min-width : 250px){
+  #navBarSmallScreen input{
+    width: 155px;
+  }
+}
+
+@media only scren and (min-width : 500px){
+  #navBarSmallScreen input{
+    width: 250px;
+  }
+}
 /***********title component*****************/
 .text-title{
   font-family: 'Permanent Marker', cursive;
@@ -266,3 +281,10 @@
 .totalRow strong{
   color: #ffbb02;
 }
+
+#formId{
+  background: #fff;
+   margin-right: 10px;
+   border: 5px solid red !important;
+   width: 5rem !important;
+} 
