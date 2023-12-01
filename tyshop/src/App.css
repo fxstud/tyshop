@@ -287,4 +287,33 @@
    margin-right: 10px;
    border: 5px solid red !important;
    width: 5rem !important;
-} 
+}
+
+/******************************panier**********************************/
+.panierCount{
+  display: none;
+  position: absolute;
+  background-color: #ffbb02;
+  top: -15px;
+  left: 8px;
+  font-size: 14px;
+  min-width: 22px;
+  min-height: 22px;
+  border: 2px solid #fff;
+  border-radius: 50%; 
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: -1px;
+  padding : 2px;
+  text-indent: -1px;
+}
+
+.fa-shopping-cart{
+  position: relative;
+  display: inline-block !important;
+}
+
+.panierCount:hover{
+  color:#ffbb02 !important;
+  background-color: #3b3a32 !important;
+}

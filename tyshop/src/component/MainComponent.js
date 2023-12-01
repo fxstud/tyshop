@@ -26,22 +26,20 @@ const mapDispatchToProps = dispatch => ({
 
 
 class Main extends React.Component{
-
     
     render(){
 
         //console.log(this.props.lesProduits.lesProduits)
         const ProductWithId = () => {
             const {pId} = useParams();    
-            return(
-                
+            return(                
                 <ProductDetail produit = {this.props.lesProduits.lesProduits.filter( p => p.id === parseInt(Number(pId)))[0]} addToCart = {this.props.addToCart}></ProductDetail>
             )
         }
 
         return(         
             <>
-                <Header />
+                <Header nbProduit = {this.props.lesProduitsInCart.nbProduit} />
                 <Routes>
                     <Route  exact path='/home' element={<Home></Home>} ></Route>
                     <Route  path='/home/:pId' Component={ProductWithId}></Route>

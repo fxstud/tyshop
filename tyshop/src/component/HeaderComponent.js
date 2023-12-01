@@ -5,6 +5,7 @@ import {FaSearch,FaShoppingCart,FaUser} from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import BeforeHeader from './BeforeHeaderComponent';
 import NavSmallScreen from './NavSmallScreen';
+import Panier from './PanierComponent';
 
 class Header extends React.Component{
 
@@ -80,9 +81,9 @@ class Header extends React.Component{
 
                         <Nav navbar className='largeMyNavbar2 ml-0 ml-lg-auto align-items-lg-center'>
                                 <NavItem className='mr-2 d-none d-lg-block'>
-                                    <Button outline className='btn-perso-1'>
-                                        <NavLink to='cart'>Mon panier <FaShoppingCart/></NavLink>
-                                    </Button>
+                                    <NavLink to={'/cart'}>
+                                            <Panier mobile={false} nbProduit = {this.props.nbProduit}></Panier>
+                                    </NavLink>
                                 </NavItem>
                                 <NavItem id='loginButton' className='mr-2 d-none d-lg-block'>
                                     <Button outline className='btn-perso-1' onClick={this.toggleModal}>Login <FaUser/></Button>
@@ -92,7 +93,7 @@ class Header extends React.Component{
                     </div>
                 </Navbar>
 
-                <NavSmallScreen toggleModal = {this.toggleModal}></NavSmallScreen>
+                <NavSmallScreen toggleModal = {this.toggleModal} nbProduit = {this.props.nbProduit}></NavSmallScreen>
 
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
@@ -111,7 +112,7 @@ class Header extends React.Component{
                                 </FormGroup>
                                 <FormGroup className="mx-2" check>
                                     <Label check>                                        
-                                        <Input  type="checkbox" name="remember" className="formClass"
+                                        <Input  type="checkbox" name="remember" id="formId"
                                         innerRef={(input) => this.remember = input}  />     
                                         Remember me
                                     </Label>
