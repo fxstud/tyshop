@@ -313,7 +313,7 @@
   display: inline-block !important;
 }
 
-.panierCount:hover{
+.largeMyNavbar2 .btn:hover p{
   color:#ffbb02 !important;
   background-color: #3b3a32 !important;
 }
