@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // UN 'FormGroup' REPRESENTE UNE LIGNE DU FORMULAIRE
-import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap'
+import { Button, Form, FormGroup, Label, Input, Col, FormFeedback } from 'reactstrap'
 import Title from './TitleComponent';
 
 export default class Contact extends Component {
@@ -16,11 +16,22 @@ export default class Contact extends Component {
             agree: false,
             contactType: 'Tel.',
             message: '',
+            touched: {
+                firstname : false,
+                lastname : false,
+                email : false,
+                object : false,
+                telnum : false,
+                message: false,
+            }
 
         }
         
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleInputChange = this.handleInputChange.bind(this)
+        this.handleBlur = this.handleBlur.bind(this)
+        this.validateText = this.validateText.bind(this)
+        this.validate = this.validate.bind(this)
 
     }
 
@@ -33,6 +44,59 @@ export default class Contact extends Component {
         this.setState({[name] : value})
     }
 
+    handleBlur = (field) =>(e) =>{
+        this.setState({
+            touched : {...this.state.touched,[field] : true}
+        })
+    }
+
+    validateText = (min,max,touched,field) => {
+        var error = ''
+
+        if(touched && field.length < min)
+            error = 'au moins'+min+' caractères svp!'
+        else if(touched && field.length > max)
+            error = 'au plus '+max+' caractères svp!'
+        else if(touched)
+            error = 'ok'
+        return error
+    }
+
+    validate = (firstname,lastname,email,object,telnum,message) => {
+        var error = {
+            firstname : '',
+            lastname : '',
+            email : '',
+            object : '',
+            telnum : '',
+            message : ''
+        }
+
+        error.firstname = this.validateText(3,10,this.state.touched.firstname,firstname)
+        error.lastname = this.validateText(3,10,this.state.touched.lastname,lastname)
+        error.object = this.validateText(5,20,this.state.touched.object,object)
+        error.message = this.validateText(3,10,this.state.touched.message,message)
+
+        const regNum = /^[0-9]{9}$/
+        const regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{4,}\.[a-zA-Z]{2,}$/
+
+        if(this.state.touched.telnum && !regNum.test(telnum))
+            error.telnum = "le numéro c'est 9 caractères"
+        else if(this.state.touched.telnum)
+            error.telnum = 'ok'
+
+        if(this.state.touched.email && !regEmail.test(email))
+        error.email = "l'email est invalide"
+        else if(this.state.touched.email)
+            error.email = 'ok'
+
+
+        return error
+
+
+
+
+    }
 
     handleSubmit(e){
         e.preventDefault()
@@ -43,6 +107,8 @@ export default class Contact extends Component {
 
 
   render() {
+
+    const errors = this.validate(this.state.firstname,this.state.lastname,this.state.email,this.state.object,this.state.telnum,this.state.message)
 
     return (
       <div className='container'> 
@@ -57,7 +123,11 @@ export default class Contact extends Component {
                                 placeholder="prenom"
                                 value={this.state.firstname}
                                 onChange={this.handleInputChange}
+                                onBlur={this.handleBlur('firstname')}
+                                valid = {errors.firstname === 'ok'}
+                                invalid = {errors.firstname.length > 3}
                             />
+                            <FormFeedback>{errors.firstname}</FormFeedback>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
@@ -67,8 +137,11 @@ export default class Contact extends Component {
                                 placeholder="nom"
                                 value={this.state.lastname}
                                 onChange={this.handleInputChange}
+                                onBlur={this.handleBlur('lastname')}
+                                valid = {errors.lastname === 'ok'}
+                                invalid = {errors.lastname.length > 3}
                             />
-                            
+                            <FormFeedback>{errors.lastname}</FormFeedback>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
@@ -78,8 +151,12 @@ export default class Contact extends Component {
                                 placeholder="Tel. number"
                                 value={this.state.telnum}
                                 onChange={this.handleInputChange}
+                                onBlur={this.handleBlur('telnum')}
+                                valid = {errors.telnum === 'ok'}
+                                invalid = {errors.telnum.length > 3}
+                                
                             />
-                            
+                            <FormFeedback>{errors.telnum}</FormFeedback>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
@@ -89,9 +166,11 @@ export default class Contact extends Component {
                                 placeholder="objet"
                                 value={this.state.object}
                                 onChange={this.handleInputChange}
+                                onBlur={this.handleBlur('object')}
+                                valid = {errors.object === 'ok'}
+                                invalid = {errors.object.length > 3}
                             />
-                            
-                                
+                            <FormFeedback>{errors.object}</FormFeedback>                                
                         </Col>
                     </FormGroup>
                     <FormGroup row>
@@ -101,8 +180,12 @@ export default class Contact extends Component {
                                 placeholder="Email"
                                 value={this.state.email}
                                 onChange={this.handleInputChange}
+                                onBlur={this.handleBlur('email')}
+                                valid = {errors.email === 'ok'}
+                                invalid = {errors.email.length > 3}
+                                
                             />
-                           
+                            <FormFeedback>{errors.email}</FormFeedback>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
@@ -135,8 +218,11 @@ export default class Contact extends Component {
                                 rows="12"
                                 value={this.state.message}
                                 onChange={this.handleInputChange}
+                                onBlur={this.handleBlur('message')}
+                                valid = {errors.message === 'ok'}
+                                invalid = {errors.message.length > 3}
                             />
-                            
+                            <FormFeedback>{errors.message}</FormFeedback>                            
                         </Col>
                     </FormGroup>
                     <FormGroup row>
