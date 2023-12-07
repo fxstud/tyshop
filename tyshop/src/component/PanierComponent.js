@@ -1,6 +1,5 @@
 import React from 'react'
 import {Button} from 'reactstrap'
-import {FaSearch,FaShoppingCart,FaUser} from "react-icons/fa";
 
 export default class Panier extends React.Component{
     constructor(props){

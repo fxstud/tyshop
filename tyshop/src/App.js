@@ -6,6 +6,7 @@ import {ConfigureStore} from './redux/ConfigureStore'
 
 import './App.css';
 import './css/product.css'
+import './css/mainMenu.css'
 
 const store = ConfigureStore()
 

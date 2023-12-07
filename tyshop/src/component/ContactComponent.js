@@ -43,7 +43,7 @@ export default class Contact extends Component {
 
         this.setState({[name] : value})
     }
-
+    // INTERVIENT LORSQUE UN ELEMENT PERD LE FOCUS 
     handleBlur = (field) =>(e) =>{
         this.setState({
             touched : {...this.state.touched,[field] : true}

@@ -9,11 +9,13 @@ import Home from './HomCompConst'
 import Cart from './CartCompConst'
 import ProductDetail from './ProductDetailComponent'
 import {addToCart,removeToCart,addQuantity,removeQuantity} from '../redux/ActionCreator'
+import Category from './CategoryComponent'
 
 const mapStateToProps = state =>{
     return{
         lesProduits : state.Products,
         lesProduitsInCart : state.Cart,
+        category : state.storeCategory,
     }
 }
 
@@ -37,6 +39,14 @@ class Main extends React.Component{
             )
         }
 
+        const CategoryWithId = () => {
+            const {cId} = useParams();    
+            return(                
+                <Category lesProduits = {this.props.lesProduits.lesProduits.filter( p => p.category_id === parseInt(Number(cId)))} addToCart = {this.props.addToCart}
+                    name = {this.props.category.filter( c => c.id === parseInt(Number(cId)))[0].name}></Category>
+            )
+        }
+
         return(         
             <>
                 <Header nbProduit = {this.props.lesProduitsInCart.nbProduit} />
@@ -45,6 +55,7 @@ class Main extends React.Component{
                     <Route  path='/home/:pId' Component={ProductWithId}></Route>
                     <Route  exact path='/contact' element={<Contact></Contact>}></Route>
                     <Route  exact path='/cart' element={<Cart></Cart>}></Route>
+                    <Route  exact path='/category/:cId' Component={CategoryWithId}></Route>
                     <Route exact path='*' element={<Navigate to='/home'></Navigate>} ></Route>
                 </Routes>               
             </>

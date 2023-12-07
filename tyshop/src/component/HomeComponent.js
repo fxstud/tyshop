@@ -1,12 +1,15 @@
 import React from "react";
 import Title from "./TitleComponent";
 import ProductList from './ProductListComponent'
+import PrincipalHomeComponent from './PrincipalHomeComponent'
 
 function Home(props){
     return(
         <div className="container">
-            <Title name={'our'} title={'products'} />
+            <PrincipalHomeComponent></PrincipalHomeComponent>
+            <Title name={'our'} title={'products'} />            
             <ProductList lesProduits = {props.lesProduits} addToCart = {props.addToCart}></ProductList>
+            
         </div>
     )
 }
